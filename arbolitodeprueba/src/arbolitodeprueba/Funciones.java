@@ -16,9 +16,7 @@ import javax.swing.JOptionPane;
  * @author Raydo
  */
 public class Funciones {
-    public ListadelCsv leer(){
-        
-        ListadelCsv listaCsv = new ListadelCsv();
+    public String leer(ArbolCadenas arbolCadenas, HashTable hojas, String[] nodos){
     
         String linea;
         String datos_csv = "";
@@ -49,10 +47,20 @@ public class Funciones {
                             i++;
                             while (i < datos_split.length) {
                                 String[] preguntas_split = datos_split[i].split("; ");
-                                
-                                listaCsv.insertarFinal(preguntas_split[0],preguntas_split[1], preguntas_split[2]);
+                                for(int k = 0; k < preguntas_split.length; k++ ){
+                                    
+                                    boolean existe = false; 
+                                    for (int m = 0; m < nodos.length; m++) {
+                                        if (nodos[m][0] == preguntas_split[k]){
+                                            
+                                        }
+                                    }
+
+                                    
+                                   buscarRegistro();
+                                }
                                 i++;
-                            } JOptionPane.showMessageDialog(null,listaCsv);
+                            } 
                         }
                     }
                     
@@ -63,9 +71,10 @@ public class Funciones {
                 }catch (Exception err){
                     JOptionPane.showMessageDialog(null, "Error al leer los datos.");
                 }
-                return listaCsv;                            
+                return datos_csv;                            
     }
     
+        
     /**
      * leerCsvCargado()
      * Método lee el archivo cargado desde el computador 
@@ -73,9 +82,8 @@ public class Funciones {
      * es la informacion por linea del csv
      */
     
-    public ListadelCsv leerCsvCargado() {
-        
-        ListadelCsv csvListaNodos = new ListadelCsv();
+    public String leerCsvCargado() {
+
         String line;
         String csvPorLinea = ""; 
 
@@ -102,7 +110,7 @@ public class Funciones {
                         if (csvListaInfoporLinea[0].equalsIgnoreCase("pregunta")){
                             ;
                         }else{
-                            csvListaNodos.insertarFinal(csvListaInfoporLinea[0], csvListaInfoporLinea[1], csvListaInfoporLinea[2]);
+                           
                         }
                           
                     }
@@ -116,6 +124,6 @@ public class Funciones {
             JOptionPane.showMessageDialog(null, "Error al leer");
             System.out.println(e);
         }
-        return csvListaNodos;
+        return csvPorLinea;
 }
 }

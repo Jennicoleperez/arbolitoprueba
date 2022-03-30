@@ -7,6 +7,7 @@ package arbolitodeprueba;
 
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author Raydo
@@ -19,10 +20,11 @@ public class Main {
     public static void main(String[] args) {
         ArbolCadenas arbolCadenas = new ArbolCadenas();
         Funciones f = new Funciones();
-        ListadelCsv l = new ListadelCsv();
+        HashTable hojas = new HashTable(10111);
+        String[] nodos; 
         
-        f.leer();
-        JOptionPane.showMessageDialog(null,l.getInformacion());
+        f.leer(arbolCadenas, hojas, nodos);
+
     
     }
 }
