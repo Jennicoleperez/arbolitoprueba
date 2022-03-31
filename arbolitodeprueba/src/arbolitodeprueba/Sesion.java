@@ -19,7 +19,7 @@ public class Sesion {
     private ArbolCadenas arbol = new ArbolCadenas();
     private HashTable[] tabla;
     private String[] nodosString;
-    private NodoCadena[] nodo;    
+    private NodoCadena[] nodos;    
 
     public Sesion() {
         this.tabla = null;
@@ -74,16 +74,36 @@ public class Sesion {
                             i++;
                             while (i < datos_split.length) {
                                 String[] preguntas_split = datos_split[i].split("; ");
+                                
+                                var nodoPrincipal;
                                 for(int k = 0; k < preguntas_split.length; k++ ){
-                                    for (int j = 0; j < nodosString.length; j++) {
-                                       if(!preguntas_split[k].equals(nodosString)){
-                                            nodo += preguntas_split[k];
-                                           
-                                    } 
+                                    var id = this.nodosString.indexOf(preguntas_split[k]);
+                                    var nodo;
+                                    if(id != -1){
+                                       nodo = new NodoCadena(preguntas_split[k]);
+                                       this.nodosString.push(preguntas_split[k]);
+                                       this.nodos.push(nodo);                                       
+                                    }else{
+                                       nodo = nodos[id];
                                     }
                                     
-                                            
+                                    if (k==0){
+                                       nodoPrincipal = nodo;
+                                       if (i==1){
+                                          this.arbol.setRaiz(nodo);
+                                       }
+                                    }
+                                    
+                                    if (k==1){
+                                       nodoPrincipal.setIzquierda(nodo);
+                                    }
+                                    
+                                    if (k==2){
+                                       nodoPrincipal.setDerecha(nodo);
+                                    }
                                 }
+                                
+                                arbol.inorden();
                             }
                         }
                                 i++;

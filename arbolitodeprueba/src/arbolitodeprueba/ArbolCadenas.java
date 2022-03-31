@@ -15,6 +15,10 @@ class ArbolCadenas {
     public ArbolCadenas() {
 
     }
+    
+    public void setRaiz(NodoCadena raiz) {
+        this.raiz = raiz;
+    } 
 
     public boolean existe(String busqueda) {
         return existe(this.raiz, busqueda);
