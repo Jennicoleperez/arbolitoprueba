@@ -15,9 +15,38 @@ import javax.swing.JOptionPane;
  *
  * @author Raydo
  */
-public class Funciones {
-    public String leer(ArbolCadenas arbolCadenas, HashTable hojas, String[] nodos){
+public class Sesion {
+    private ArbolCadenas arbol = new ArbolCadenas();
+    private HashTable[] tabla;
+    private String[] nodosString;
+    private NodoCadena[] nodo;    
+
+    public Sesion() {
+        this.tabla = null;
+        this.nodosString = null;
+        this.nodo = null;
+    }
+
     
+    public void adivinarAnimal(){
+        System.out.println("");
+    }
+    
+    public void agregarAnimal(){
+        System.out.println("");
+    }
+
+    public void verificarExistencia(){
+        System.out.println("");
+
+    }
+    
+    public void inicializar(){
+        System.out.println("");
+    }
+    
+    
+    public String leer(){
         String linea;
         String datos_csv = "";
         String path = "test\\conocimientos.csv";
@@ -34,44 +63,39 @@ public class Funciones {
                         if (!linea.isEmpty()){
                             datos_csv += linea + "\n";                      
                         }
-                        
                     }
-                    
-                    if (!"".equals(datos_csv)&& !datos_csv.isEmpty()){
+                        if (!"".equals(datos_csv)&& !datos_csv.isEmpty()){
                         String[] datos_split = datos_csv.split("\n"); 
                         
                         int i = 0;                        
                         
                         if("Pregunta; No; Si".equals(datos_split[i])) {
-                            
+                            String nodo = "";
                             i++;
                             while (i < datos_split.length) {
                                 String[] preguntas_split = datos_split[i].split("; ");
                                 for(int k = 0; k < preguntas_split.length; k++ ){
-                                    
-                                    boolean existe = false; 
-                                    for (int m = 0; m < nodos.length; m++) {
-                                        if (nodos[m][0] == preguntas_split[k]){
-                                            
-                                        }
+                                    for (int j = 0; j < nodosString.length; j++) {
+                                       if(!preguntas_split[k].equals(nodosString)){
+                                            nodo += preguntas_split[k];
+                                           
+                                    } 
                                     }
-
                                     
-                                   buscarRegistro();
+                                            
                                 }
-                                i++;
-                            } 
+                            }
                         }
+                                i++;
                     }
-                    
                     br.close();
                     JOptionPane.showMessageDialog(null, "Lectura exitosa.");
-                    
-                }
-                }catch (Exception err){
+
+            }
+        }catch (Exception err){
                     JOptionPane.showMessageDialog(null, "Error al leer los datos.");
-                }
-                return datos_csv;                            
+        }
+        return datos_csv ;                            
     }
     
         
@@ -125,5 +149,70 @@ public class Funciones {
             System.out.println(e);
         }
         return csvPorLinea;
+    }
+    
+    
+    public void guardarConocimientos(){
+        System.out.println("");
+    }
+
+    /**
+     * @return the arbol
+     */
+    public ArbolCadenas getArbol() {
+        return arbol;
+    }
+
+    /**
+     * @param arbol the arbol to set
+     */
+    public void setArbol(ArbolCadenas arbol) {
+        this.arbol = arbol;
+    }
+
+    /**
+     * @return the tabla
+     */
+    public HashTable[] getTabla() {
+        return tabla;
+    }
+
+    /**
+     * @param tabla the tabla to set
+     */
+    public void setTabla(HashTable[] tabla) {
+        this.tabla = tabla;
+    }
+
+    /**
+     * @return the nodosString
+     */
+    public String[] getNodosString() {
+        return nodosString;
+    }
+
+    /**
+     * @param nodosString the nodosString to set
+     */
+    public void setNodosString(String[] nodosString) {
+        this.nodosString = nodosString;
+    }
+
+    /**
+     * @return the nodo
+     */
+    public NodoCadena[] getNodo() {
+        return nodo;
+    }
+
+    /**
+     * @param nodo the nodo to set
+     */
+    public void setNodo(NodoCadena[] nodo) {
+        this.nodo = nodo;
+    }
+    
+    
+    
 }
-}
+

@@ -5,6 +5,10 @@
  */
 package arbolitodeprueba;
 
+import arbolitodeprueba.NodoCadena;
+import arbolitodeprueba.NodoHashTable;
+
+
 /**
  *
  * @author Jennifer Pérez
@@ -69,12 +73,12 @@ public class HashTable {
         if (this.tabla[posicion] != null) {
 
             NodoHashTable temp = this.tabla[posicion];
-            if (temp.getAnimal().equals(palabra)) {
+            if (temp.getPalabra().equals(palabra)) {
                 existe = true;
             }
             while (temp.getSiguiente() != null) {
                 temp = temp.getSiguiente();
-                if (temp.getAnimal().equals(palabra)) {
+                if (temp.getPalabra().equals(palabra)) {
                     existe = true;
 
                 }
@@ -108,12 +112,12 @@ public class HashTable {
 
         if (temp != null) {
             if (temp.getSiguiente() == null) {
-                if (temp.getAnimal().equals(palabra)) {
+                if (temp.getPalabra().equals(palabra)) {
                     existe = true;
                 }
             } else {
                 while (temp != null && !existe) {
-                    if (temp.getAnimal().equals(palabra)) {
+                    if (temp.getPalabra().equals(palabra)) {
                         existe = true;
                     } else {
                         temp = temp.getSiguiente();

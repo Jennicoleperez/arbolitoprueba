@@ -5,6 +5,7 @@
  */
 package arbolitodeprueba;
 
+import Interfaces.VentanaInicio;
 import javax.swing.JOptionPane;
 
 
@@ -18,12 +19,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArbolCadenas arbolCadenas = new ArbolCadenas();
-        Funciones f = new Funciones();
-        HashTable hojas = new HashTable(10111);
-        String[] nodos; 
-        
-        f.leer(arbolCadenas, hojas, nodos);
+        VentanaInicio vi = new VentanaInicio();
+        Sesion s = new Sesion();
+
 
     
     }
